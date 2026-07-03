@@ -1,0 +1,759 @@
+/* ==========================================
+   GOOGLE FONT & RESET
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#4facfe,#00c6fb);
+    display:flex;
+    justify-content:center;
+    padding:30px;
+    transition:.4s;
+    color:#fff;
+}
+
+/* ==========================================
+   DARK MODE
+========================================== */
+
+body.dark{
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+}
+
+/* ==========================================
+   CONTAINER
+========================================== */
+
+.container{
+    width:100%;
+    max-width:1200px;
+}
+
+/* ==========================================
+   MAIN WEATHER CARD
+========================================== */
+
+.weather-container{
+    display:none;
+    animation:fade .6s ease;
+}
+
+.weather-container.show{
+    display:block;
+}
+
+.weather-card{
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(18px);
+    border-radius:25px;
+    padding:30px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.logo i{
+    font-size:55px;
+}
+
+.logo h1{
+    font-size:36px;
+    font-weight:700;
+}
+
+.logo p{
+    opacity:.8;
+}
+
+/* ==========================================
+   THEME TOGGLE
+========================================== */
+
+.theme-container{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.switch{
+    position:relative;
+    display:inline-block;
+    width:65px;
+    height:34px;
+}
+
+.switch input{
+    display:none;
+}
+
+.slider{
+    position:absolute;
+    inset:0;
+    background:#ccc;
+    border-radius:50px;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.slider::before{
+    content:"";
+    position:absolute;
+    width:26px;
+    height:26px;
+    left:4px;
+    bottom:4px;
+    background:#fff;
+    border-radius:50%;
+    transition:.4s;
+}
+
+input:checked + .slider{
+    background:#2563eb;
+}
+
+input:checked + .slider::before{
+    transform:translateX(31px);
+}
+
+/* ==========================================
+   SEARCH SECTION
+========================================== */
+
+.search-section{
+    display:flex;
+    gap:15px;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+}
+
+.search-box{
+    flex:1;
+    display:flex;
+    gap:15px;
+}
+
+.search-input{
+    flex:1;
+    display:flex;
+    align-items:center;
+    padding:0 18px;
+    background:rgba(255,255,255,.18);
+    backdrop-filter:blur(10px);
+    border-radius:50px;
+    border:2px solid rgba(255,255,255,.2);
+    transition:.3s;
+}
+
+.search-input:hover{
+    border-color:white;
+}
+
+.search-input:focus-within{
+    border-color:white;
+    box-shadow:0 0 15px rgba(255,255,255,.35);
+}
+
+.search-input i{
+    margin-right:12px;
+}
+
+.search-input input{
+    flex:1;
+    border:none;
+    background:transparent;
+    outline:none;
+    padding:16px 0;
+    color:white;
+    font-size:17px;
+}
+
+.search-input input::placeholder{
+    color:rgba(255,255,255,.8);
+}
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+button{
+    cursor:pointer;
+    border:none;
+    transition:.3s;
+}
+
+#searchBtn,
+.location-btn,
+.favorite-btn{
+
+    padding:14px 22px;
+    border-radius:50px;
+    background:white;
+    color:#2563eb;
+    font-weight:600;
+    font-size:15px;
+}
+
+#searchBtn:hover,
+.location-btn:hover,
+.favorite-btn:hover{
+
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+}
+
+/* ==========================================
+   LOADING
+========================================== */
+
+.loading{
+    display:none;
+    justify-content:center;
+    margin:30px 0;
+}
+
+.spinner{
+    width:60px;
+    height:60px;
+    border:6px solid rgba(255,255,255,.25);
+    border-top:6px solid white;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+/* ==========================================
+   ERROR
+========================================== */
+
+.error{
+    text-align:center;
+    color:#ffe66d;
+    margin-bottom:20px;
+    font-weight:600;
+}
+
+/* ==========================================
+   HERO SECTION
+========================================== */
+
+.hero{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:35px;
+    text-align:left;
+    margin:40px 0;
+    flex-wrap:wrap;
+}
+
+.hero img{
+    width:150px;
+}
+
+.hero h2{
+    font-size:36px;
+}
+
+.hero #temperature{
+    font-size:78px;
+    font-weight:700;
+    margin:10px 0;
+}
+
+.hero #description{
+    text-transform:capitalize;
+    font-size:22px;
+}
+
+#currentDate{
+    opacity:.8;
+}
+
+/* ==========================================
+   DETAILS GRID
+========================================== */
+
+.details-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+    margin-top:30px;
+
+}
+
+.card{
+
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(12px);
+    padding:22px;
+    border-radius:20px;
+    text-align:center;
+    transition:.35s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+    background:rgba(255,255,255,.22);
+
+}
+
+.card i{
+
+    font-size:30px;
+    margin-bottom:15px;
+
+}
+
+.card h3{
+
+    margin-bottom:10px;
+    font-size:18px;
+
+}
+
+.card p{
+
+    font-size:22px;
+    font-weight:600;
+
+}
+/* ==========================================
+   SECTION STYLES
+========================================== */
+
+.section{
+    margin-top:40px;
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+}
+
+.section-title i{
+    font-size:24px;
+}
+
+.section-title h2{
+    font-size:24px;
+    font-weight:600;
+}
+
+/* ==========================================
+   AQI CARD
+========================================== */
+
+.section-card{
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    transition:.3s;
+}
+
+.section-card:hover{
+    transform:translateY(-5px);
+}
+
+#aqiValue{
+    font-size:48px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+#aqiText{
+    font-size:20px;
+}
+
+/* AQI Colors */
+
+.good{
+    background:#22c55e !important;
+}
+
+.moderate{
+    background:#eab308 !important;
+}
+
+.poor{
+    background:#f97316 !important;
+}
+
+.very-poor{
+    background:#ef4444 !important;
+}
+
+.severe{
+    background:#7e22ce !important;
+}
+
+/* ==========================================
+   FORECAST
+========================================== */
+
+.forecast-container{
+
+    display:flex;
+    gap:20px;
+    overflow-x:auto;
+    padding-bottom:10px;
+    scrollbar-width:none;
+
+}
+
+.forecast-container::-webkit-scrollbar{
+    display:none;
+}
+
+.forecast-card{
+
+    min-width:140px;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+    transition:.3s;
+
+}
+
+.forecast-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.forecast-card img{
+
+    width:70px;
+
+}
+
+.forecast-card h3{
+
+    margin:10px 0;
+
+}
+
+.forecast-card p{
+
+    font-weight:600;
+
+}
+
+/* ==========================================
+   FAVORITES & HISTORY
+========================================== */
+
+.list-container{
+
+    display:grid;
+    gap:12px;
+
+}
+
+.favorite-item,
+.history-item{
+
+    background:rgba(255,255,255,.15);
+    padding:15px 20px;
+    border-radius:15px;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+.favorite-item:hover,
+.history-item:hover{
+
+    background:rgba(255,255,255,.25);
+
+    transform:translateX(8px);
+
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.footer{
+
+    text-align:center;
+    margin-top:50px;
+    opacity:.85;
+    line-height:1.8;
+
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes spin{
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+.fade{
+
+    animation:fade .6s ease;
+
+}
+
+/* ==========================================
+   WEATHER BACKGROUNDS
+========================================== */
+
+body.clear{
+
+    background:linear-gradient(135deg,#4facfe,#00c6fb);
+
+}
+
+body.clouds{
+
+    background:linear-gradient(135deg,#757f9a,#d7dde8);
+
+}
+
+body.rain{
+
+    background:linear-gradient(135deg,#373B44,#4286f4);
+
+}
+
+body.snow{
+
+    background:linear-gradient(135deg,#E6DADA,#274046);
+
+}
+
+body.thunder{
+
+    background:linear-gradient(135deg,#232526,#414345);
+
+}
+
+body.mist{
+
+    background:linear-gradient(135deg,#bdc3c7,#2c3e50);
+
+}
+
+/* ==========================================
+   GLASS EFFECT
+========================================== */
+
+.card,
+.section-card,
+.forecast-card,
+.favorite-item,
+.history-item{
+
+    border:1px solid rgba(255,255,255,.15);
+
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:rgba(255,255,255,.3);
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:992px){
+
+.hero{
+
+    flex-direction:column;
+    text-align:center;
+
+}
+
+.hero img{
+
+    width:130px;
+
+}
+
+.hero h2{
+
+    font-size:30px;
+
+}
+
+.hero #temperature{
+
+    font-size:65px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+body{
+
+    padding:15px;
+
+}
+
+.header{
+
+    flex-direction:column;
+    text-align:center;
+
+}
+
+.search-section{
+
+    flex-direction:column;
+
+}
+
+.search-box{
+
+    flex-direction:column;
+
+}
+
+#searchBtn{
+
+    width:100%;
+
+}
+
+.location-btn{
+
+    width:100%;
+
+}
+
+.details-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.section-title{
+
+    justify-content:center;
+
+}
+
+}
+
+@media(max-width:500px){
+
+.logo h1{
+
+    font-size:28px;
+
+}
+
+.hero #temperature{
+
+    font-size:55px;
+
+}
+
+.hero h2{
+
+    font-size:24px;
+
+}
+
+.forecast-card{
+
+    min-width:120px;
+
+}
+
+.card{
+
+    padding:18px;
+
+}
+
+}
+
+/* ==========================================
+   END OF FILE
+========================================== */
