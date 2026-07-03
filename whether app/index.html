@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+
+        <header class="header">
+
+            <div class="logo">
+
+                <i class="fa-solid fa-cloud-sun"></i>
+
+                <div>
+
+                    <h1>Weather App</h1>
+
+                    <p>Real-Time Weather Forecast</p>
+
+                </div>
+
+            </div>
+
+            <div class="theme-container">
+
+                <i class="fa-solid fa-sun"></i>
+
+                <label class="switch">
+
+                    <input type="checkbox" id="themeToggle">
+
+                    <span class="slider"></span>
+
+                </label>
+
+                <i class="fa-solid fa-moon"></i>
+
+            </div>
+
+        </header>
+
+        <!-- Search -->
+
+        <section class="search-section">
+
+            <div class="search-box">
+
+                <div class="search-input">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        id="cityInput"
+                        placeholder="Search for a city...">
+
+                </div>
+
+                <button id="searchBtn">
+
+                    Search
+
+                </button>
+
+            </div>
+
+            <button id="locationBtn" class="location-btn">
+
+                <i class="fa-solid fa-location-crosshairs"></i>
+
+                Current Location
+
+            </button>
+
+        </section>
+
+        <!-- Loading -->
+
+        <div id="loading" class="loading">
+
+            <div class="spinner"></div>
+
+        </div>
+
+        <!-- Error -->
+
+        <div id="error" class="error"></div>
+
+        <!-- Weather -->
+
+        <section id="weatherResult" class="weather-container">
+
+            <!-- Hero -->
+
+            <div class="hero">
+
+                <img
+                    id="weatherIcon"
+                    src=""
+                    alt="Weather">
+
+                <div>
+
+                    <h2 id="cityName"></h2>
+
+                    <p id="currentDate"></p>
+
+                    <h1 id="temperature"></h1>
+
+                    <p id="description"></p>
+
+                </div>
+
+            </div>
+
+            <!-- Details -->
+
+            <div class="details-grid">
+
+                <div class="card">
+
+                    <i class="fa-solid fa-temperature-half"></i>
+
+                    <h3>Feels Like</h3>
+
+                    <p id="feelsLike"></p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-droplet"></i>
+
+                    <h3>Humidity</h3>
+
+                    <p id="humidity"></p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-wind"></i>
+
+                    <h3>Wind</h3>
+
+                    <p id="wind"></p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-eye"></i>
+
+                    <h3>Visibility</h3>
+
+                    <p id="visibility"></p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-cloud"></i>
+
+                    <h3>Clouds</h3>
+
+                    <p id="clouds"></p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-gauge-high"></i>
+
+                    <h3>Pressure</h3>
+
+                    <p id="pressure"></p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-temperature-arrow-down"></i>
+
+                    <h3>Min Temp</h3>
+
+                    <p id="minTemp"></p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-temperature-arrow-up"></i>
+
+                    <h3>Max Temp</h3>
+
+                    <p id="maxTemp"></p>
+
+                </div>
+                <div class="card">
+
+                    <i class="fa-solid fa-sun"></i>
+
+                    <h3>Sunrise</h3>
+
+                    <p id="sunrise"></p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-moon"></i>
+
+                    <h3>Sunset</h3>
+
+                    <p id="sunset"></p>
+
+                </div>
+
+            </div>
+
+            <!-- Air Quality -->
+
+            <section class="section">
+
+                <div class="section-title">
+
+                    <i class="fa-solid fa-wind"></i>
+
+                    <h2>Air Quality</h2>
+
+                </div>
+
+                <div id="aqiCard" class="section-card">
+
+                    <h3 id="aqiValue">--</h3>
+
+                    <p id="aqiText">Loading...</p>
+
+                </div>
+
+            </section>
+
+            <!-- Forecast -->
+
+            <section class="section">
+
+                <div class="section-title">
+
+                    <i class="fa-solid fa-calendar-days"></i>
+
+                    <h2>5-Day Forecast</h2>
+
+                </div>
+
+                <div id="forecast" class="forecast-container">
+
+                    <!-- Forecast cards will be added here -->
+
+                </div>
+
+            </section>
+
+            <!-- Favorites -->
+
+            <section class="section">
+
+                <div class="section-title">
+
+                    <i class="fa-solid fa-star"></i>
+
+                    <h2>Favorite Cities</h2>
+
+                </div>
+
+                <button id="favoriteBtn" class="favorite-btn">
+
+                    <i class="fa-solid fa-star"></i>
+
+                    Add Current City
+
+                </button>
+
+                <div id="favorites" class="list-container">
+
+                    No favorite cities yet.
+
+                </div>
+
+            </section>
+
+            <!-- Recent Searches -->
+
+            <section class="section">
+
+                <div class="section-title">
+
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+
+                    <h2>Recent Searches</h2>
+
+                </div>
+
+                <div id="history" class="list-container">
+
+                    No recent searches.
+
+                </div>
+
+            </section>
+
+        </section>
+
+        <!-- Footer -->
+
+        <footer class="footer">
+
+            <p>
+
+                Made by <strong>Yashrajsinh Parmar</strong>
+
+            </p>
+
+            <p>
+
+                Powered by OpenWeather API
+
+            </p>
+
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
